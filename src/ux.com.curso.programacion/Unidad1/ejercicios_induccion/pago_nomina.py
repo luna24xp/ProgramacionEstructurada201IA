@@ -2,7 +2,7 @@
 
 numero_horas = float(input("Ingrese el numero de horas trabajadas: "))
 tarifa_hora = float(input("Ingrese la tarifa por hora: "))
-nombre_empleado = input("Ingrese el nombre del empleado: ")
+nombre_empleado = str(input("Ingrese el nombre del empleado: "))
 
 # Las horas superiores a 35 se pagan como extra
 if numero_horas > 35:
@@ -12,7 +12,7 @@ else:
     pago_bruto = numero_horas * tarifa_hora
     
 # Calculo de impuestos
-if pago_bruto > 2000:
+if pago_bruto < 2000:
     impuestos =0
 elif pago_bruto <= 2000:
     impuestos = (pago_bruto -2000) * 0.20
@@ -23,7 +23,7 @@ pago_neto = pago_bruto - impuestos
 
 # Mostrar resultados
 print(f"Empleado : {nombre_empleado}")
-print(f"Pago bruto : ${pago_bruto: .2f}")
+print(f"Pago bruto : ${pago_bruto:.2f}")
 print(f"Impuestos : ${impuestos:.2f}")
 print(f"Pago neto : ${pago_neto:.2f}")
     

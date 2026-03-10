@@ -4,7 +4,7 @@ def contador_positivos():
     contador = 0
     while True:
         numero = int(input("Ingrese un numero (-1 para terminar): "))
-        if numero == -13:
+        if numero == -1:
             break
         contador += 1
     print("cantidad de numeros positivos ingresados: ", contador)

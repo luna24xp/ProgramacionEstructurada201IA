@@ -1,6 +1,6 @@
 #EJERCICIO DE CADENAS
 
-def demostracion_cadenas(cadena):
+def demostracion_cadenas():
     cadena = "universidad de xalapa"
 
     print (cadena.upper()) 
@@ -9,7 +9,7 @@ def demostracion_cadenas(cadena):
     print (cadena.title())
     
 def main():
-    demostracion_cadenas(cadena = "universidad de xalapa")
+    demostracion_cadenas()
 
 if __name__ == "__main__":
     main()

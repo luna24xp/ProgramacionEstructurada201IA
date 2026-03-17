@@ -7,15 +7,17 @@ def mostrar_funciones_math(numero):
     
     sen_x = math.sin(numero)
     cos_x = math.cos(numero)
+    tan_x = math.tan(numero)
     
     print(f"El seno de {numero} es: {sen_x}")
     print(f"El coseno de {numero} es: {cos_x}")
+    print(f"La tangente de {numero} es: {tan_x}")
 
     resultado = sen_x ** 2 + cos_x ** 2
     print(f"El resultado de sen^2 + cos^2 es: {resultado}")
     
 def main():
-    numero = float(input("Ingrese un numero para calcular su seno y coseno: "))
+    numero = float(input("Ingrese un numero para calcular su seno y coseno y tangente: "))
     mostrar_funciones_math(numero)
     
 if __name__ == "__main__":

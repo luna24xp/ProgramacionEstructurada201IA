@@ -14,7 +14,7 @@ def simulacion_entrenamiento_lotes():
         print("El proceso de carga de ha detenido debido a que el tamaño del lote es demasiado grande.")
     else:
         print(f"El tamaño del lote de tensores es: {tam_lotes}")
-        print("El proceso de entrenamiento se ha iniciado correctamente.")
+        print("El proceso se ha iniciado correctamente.")
 
 # Definición de la función main para iniciar el programa
 """

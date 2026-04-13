@@ -3,7 +3,7 @@
 umbral_bajo = 0.3
 umbral_alto = 0.7
     
-def clasificar_pixel (valor_pixel): 
+def clasificar_pixel (): 
     #Solicitar al usuario
     intensidad = float(input("Ingrese la intensidad del pixel (entre 0 y 0.1): "))
     
@@ -27,7 +27,7 @@ def clasificar_pixel (valor_pixel):
     print("Analisis de imagen finalizado")
 
 def main():
-    clasificar_pixel(valor_pixel=None)
+    clasificar_pixel()
 
 if __name__ == "__main__":
     main()

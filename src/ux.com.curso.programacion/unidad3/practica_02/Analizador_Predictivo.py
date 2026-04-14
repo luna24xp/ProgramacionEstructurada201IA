@@ -36,6 +36,14 @@ def obtener_estadisticas(lista_datos):
 	Devuelve una TUPLA con: (Valor máximo, Valor mínimo, Promedio).
 	"""
 # IMPLEMENTAR AQUÍ
+	if not lista_datos:
+		return (None, None, None)
+
+	valor_maximo = max(lista_datos)
+	valor_minimo = min(lista_datos)
+	promedio = sum(lista_datos) / len(lista_datos)
+
+	return (valor_maximo, valor_minimo, promedio)
 pass
 
 def generar_reporte(total_datos, validos, estadisticas):

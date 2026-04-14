@@ -65,12 +65,16 @@ def generar_reporte(total_datos, validos, estadisticas):
 	print(f"Promedio: {promedio:.2f}")
 	print("*" * 30)
 pass
+
+import os
 # --- LÓGICA PRINCIPAL (NO MODIFICAR ESTA PARTE) ---
 def ejecutar_pipeline():
 	datos_finales = []
 	cuenta_total = 0
+	ruta_script = os.path.dirname(os.path.abspath(__file__))
+	ruta_archivo = os.path.join(ruta_script, "lecturas_sensores.txt")
 
-	with open("lecturas_sensores.txt", "r") as f:
+	with open(ruta_archivo, "r") as f:
 		for linea in f:
 			cuenta_total += 1
 			valor = limpiar_dato(linea.strip())
@@ -81,5 +85,6 @@ def ejecutar_pipeline():
 	if datos_finales:
 		stats = obtener_estadisticas(datos_finales)
 		generar_reporte(cuenta_total, len(datos_finales), stats)
+
 if __name__ == "__main__":
     ejecutar_pipeline()

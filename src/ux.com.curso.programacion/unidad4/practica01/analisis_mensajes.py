@@ -35,3 +35,9 @@ def main():
     
 if __name__ == "__main__":
     main()
+    
+
+"""
+Al no importar la biblioteca numpy, el programa no podrá ejecutar la funcion np.mean, ya que no sabra lo que es np,
+ni trendra las herramientas necesarias para hacer los calculos correspondientes
+"""

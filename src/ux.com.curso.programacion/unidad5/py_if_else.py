@@ -13,7 +13,7 @@ def solve(n):
         print("Not Weird")
     elif n % 2 == 0 and 6 <= n <= 20:
         print("Weird")
-    elif n % 2 == 0 and n > 20:
+    else:
         print("Not Weird")
 
 if __name__ == '__main__':

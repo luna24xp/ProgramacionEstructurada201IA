@@ -4,7 +4,7 @@ productos = ["Laptop", "Smartphone", "Tablet"]
 
 ventas = [[0] * 3 for _ in range(3)]
 
- 
+
 
 # Lectura de datos
 
@@ -28,6 +28,8 @@ total_por_producto = []
 
 def lector_ventas():
 
+    total_general=0
+    
     for i in range(3):
 
         suma_producto = sum(ventas[i])

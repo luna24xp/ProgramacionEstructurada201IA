@@ -4,7 +4,7 @@ Laboratorio: Refactorización y Análisis de Código
 Alumno: [Jesús Luna Mestizo]
 """
 import random  # Única librería importada por el novato
-import math  
+import math  # hola 
 
 # =====================================================================
 # RETO 1: El Teorema de Fermat

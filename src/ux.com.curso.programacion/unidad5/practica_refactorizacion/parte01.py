@@ -1,9 +1,10 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código
-Alumno: [Tu Nombre]
+Alumno: [Jesús Luna Mestizo]
 """
 import random  # Única librería importada por el novato
+import math  
 
 # =====================================================================
 # RETO 1: El Teorema de Fermat
@@ -14,6 +15,13 @@ def verificar_fermat(a, b, c):
     n = 4
     if n > 2:
         if a**n + b**n == c**n:
+            print("¡Fermat se equivocó!")
+        else:
+            print("No, esa combinación no funciona.")
+
+def verificar_fermat_refactorizar(a, b, c, n):
+    if n > 2:
+        if math.pow(a, n) + math.pow(b, n) == math.pow(c, n):
             print("¡Fermat se equivocó!")
         else:
             print("No, esa combinación no funciona.")
@@ -34,6 +42,14 @@ def calcular_distancia(x1, y1, x2, y2):
     distancia = suma_cuadrados ** 0.5 
     return distancia
 
+def calcular_distancia_refactorizar(x1, y1, x2, y2):
+    return math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+
+def calcular_distancia_refactorizar_v2(x1, y1, x2, y2):
+    return math.hypot(x2 - x1, y2 - y1)
+
+
+
 # =====================================================================
 # RETO 3: Selector Aleatorio de Respuestas para el Bot
 # Sentido: Que el agente Discord responda con un saludo al azar.
@@ -52,6 +68,14 @@ def obtener_saludo_agente():
     elif opcion == 4:
         return "Hola humano, procesando tus peticiones."
 
+def obtener_saludo_agente_refactorizado():
+    saludos = [
+        "Hola, soy el agente de IA. ¿En qué ayudo?",
+        "¡Conexión establecida! Listo para operar.",
+        "Sistemas en línea. Monitoreando el servidor.",
+        "Hola humano, procesando tus peticiones."
+    ]
+    return random.choice(saludos)
 # =====================================================================
 # RETO 4: Clasificador de Alertas Críticas (Validación de Rangos)
 # Sentido: Evaluar si el error (Loss) de la IA requiere apagar el sistema.
@@ -72,11 +96,28 @@ def evaluar_error_sistema(valor_loss):
     else:
         return "Error: Valor negativo inválido"
 
+def evaluar_error_sistema_refactorizado(valor_loss):
+    if valor_loss < 0.0:
+        return "Error: Valor negativo inválido"
+    elif valor_loss < 0.4:
+        return "Estable"
+    elif valor_loss < 0.8:
+        return "Advertencia: Gradiente inestable"
+    elif valor_loss <= 1.0:
+        return "CRÍTICO: Abortar entrenamiento"
+    else:
+        return "Error: Valor fuera de rango"
+
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
     print("--- Probando Código Inicial ---")
     verificar_fermat(3, 4, 5)
+    verificar_fermat_refactorizar(3, 4, 5, 4)
     print("Distancia calculada:", calcular_distancia(0, 0, 3, 4))
+    print("Distancia refactorizada:", calcular_distancia_refactorizar(0, 0, 3, 4))
+    print("Distancia refactorizada v2:", calcular_distancia_refactorizar_v2(0, 0, 3, 4))
     print("Respuesta bot:", obtener_saludo_agente())
+    print("respuesta bot refactorizada:", obtener_saludo_agente_refactorizado())
     print("Estado del log:", evaluar_error_sistema(0.85))
+    print("Estado del log refactorizado:", evaluar_error_sistema_refactorizado(0.85))

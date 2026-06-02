@@ -1,9 +1,10 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte III)
-Alumno: [Tu Nombre]
+Alumno: [Jesús Luna Mestizo]
 """
-import math  # El novato solo importó math esta vez
+import math  # El novato solo importó math esta ve
+import random
 
 # =====================================================================
 # RETO 1: Inicializador de Tablero de Juego (Matrices)
@@ -26,6 +27,14 @@ def inicializar_tablero_vacio():
             
     return tablero
 
+def inicializar_tablero_vacio_refactorizado():
+    # Usamos comprensión de listas para crear filas independientes
+    return [[0 for _ in range(4)] for _ in range(4)]
+
+def inicializar_tablero_vacio_refactorizado_v2():
+    # Usamos la función nativa de Python para crear una matriz de ceros
+    return [[0] * 4 for _ in range(4)]
+
 # =====================================================================
 # RETO 2: Recortador de Valores Atípicos (Clamping de Datos)
 # Sentido: Limitar las señales de los sensores del robot a un rango seguro.
@@ -43,6 +52,10 @@ def limitar_senal_sensor(valor_lectura, minimo, maximo):
             resultado = valor_lectura
             
     return resultado
+
+def limitar_senal_sensor_refactorizado(valor_lectura, minimo, maximo):
+    # Usamos la función nativa max para asegurar el mínimo y min para el máximo
+    return max(minimo, min(valor_lectura, maximo))
 
 # =====================================================================
 # RETO 3: Buscador del Valor Más Cercano a Cero (Error Mínimo)
@@ -68,6 +81,21 @@ def buscar_error_minimo(lista_errores):
             
     return menor_error
 
+def buscar_error_minimo_refactorizado(lista_errores):
+    # Usamos la función nativa abs para obtener el valor absoluto
+    menor_error = float('inf')  # Inicializamos con infinito positivo
+    
+    for error in lista_errores:
+        absoluto = abs(error)
+        if absoluto < menor_error:
+            menor_error = absoluto
+            
+    return menor_error
+
+def buscar_error_minimo_refactorizado_v2(lista_errores):
+    # Usamos la función nativa min con una función lambda para obtener el mínimo absoluto
+    return min(lista_errores, key=lambda x: abs(x))
+
 # =====================================================================
 # RETO 4: Filtro de Valores Únicos (Eliminador de Duplicados)
 # Sentido: Limpiar las IDs de los usuarios del servidor de Discord para
@@ -92,6 +120,10 @@ def depurar_usuarios_repetidos(lista_ids):
             
     return lista_limpia
 
+def depurar_usuarios_repetidos_refactorizado(lista_ids):
+    # Usamos un conjunto (set) para eliminar duplicados de forma eficiente
+    return list(set(lista_ids))
+
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
@@ -101,11 +133,25 @@ if __name__ == "__main__":
     print("Tablero inicializado de 4x4:")
     for fila in tablero_ia:
         print(fila)
+    
+    tablero_ia_refactorizado = inicializar_tablero_vacio_refactorizado()
+    print("Tablero inicializado de 4x4 refactorizado:")
+    for fila in tablero_ia_refactorizado:
+        print(fila)
+    
+    tablero_ia_refactorizado_v2 = inicializar_tablero_vacio_refactorizado_v2()
+    print("Tablero inicializado de 4x4 refactorizado v2:")
+    for fila in tablero_ia_refactorizado_v2:
+        print(fila)
         
     print("Lectura recortada (125.4 en rango 0-100):", limitar_senal_sensor(125.4, 0.0, 100.0))
+    print("Lectura recortada refactorizada (125.4 en rango 0-100):", limitar_senal_sensor_refactorizado(125.4, 0.0, 100.0))
     
     errores_entrenamiento = [0.45, -0.12, 0.89, -0.03, 0.22]
     print("El error más cercano a cero es:", buscar_error_minimo(errores_entrenamiento))
+    print("El error más cercano a cero es (refactorizado):", buscar_error_minimo_refactorizado(errores_entrenamiento))
+    print("El error más cercano a cero es (refactorizado v2):", buscar_error_minimo_refactorizado_v2(errores_entrenamiento))
     
     ids_discord = [4521, 8892, 4521, 1022, 8892, 9931]
     print("Lista de IDs únicas filtradas:", depurar_usuarios_repetidos(ids_discord))
+    print("Lista de IDs únicas filtradas refactorizada:", depurar_usuarios_repetidos_refactorizado(ids_discord))

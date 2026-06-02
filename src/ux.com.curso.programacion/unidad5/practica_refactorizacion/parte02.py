@@ -1,7 +1,7 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte II)
-Alumno: [Tu Nombre]
+Alumno: [Jesús Luna Mestizo]
 """
 import random  # Única librería importada por el novato
 import math
